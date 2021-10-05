@@ -5,7 +5,7 @@ import favoritesReducer from './favoritesReducer'
 
 const reducer = combineReducers({
     movieState:movieReducer,
-    favoritesReducer:favoritesReducer
+    favoritesState:favoritesReducer
 })
 
 export default reducer;
