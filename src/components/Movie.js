@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deleteMovie } from './../actions/movieActions'
+import { addFavorites } from '../actions/favoritesActions';
 
 
 const Movie = (props) => {
@@ -14,6 +15,10 @@ const Movie = (props) => {
     const handleDelete = (id) => {
        props.dispatch(deleteMovie(id))
         push('/movies')
+    }
+
+    const handleAddFavorite = (newMovie) => {
+        props.dispatch(addFavorites(newMovie))
     }
     
     console.log(props)
@@ -46,7 +51,7 @@ const Movie = (props) => {
                         </section>
                         
                         <section>
-                            {displayFavorites && <span className="m-2 btn btn-dark">Favorite</span>}
+                            {displayFavorites && <span onClick={()=>{handleAddFavorite(movie)}}className="m-2 btn btn-dark">Favorite</span>}
                             <span className="delete"><input onClick={() => {handleDelete(movie.id)}}type="button" className="m-2 btn btn-danger" value="Delete"/></span>
                         </section>
                     </div>
